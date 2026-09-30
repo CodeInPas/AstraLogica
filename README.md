@@ -26,6 +26,9 @@ Berikut adalah draf deskripsi singkat dalam bahasa Inggris yang menarik, profesi
 
 ---
 
+## Release 
+[Download](https://github.com/CodeInPas/AstraLogica/releases)
+
 ## ☕ Support the Project
 
 If you find **AstraLogica** helpful and want to support its ongoing development, consider buying me a coffee or sending a tip. Any support is deeply appreciated!
