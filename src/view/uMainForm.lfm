@@ -1,0 +1,531 @@
+object MainForm: TMainForm
+  Left = 200
+  Height = 650
+  Top = 100
+  Width = 1067
+  Caption = 'AstraLogica: Orbital Command'
+  ClientHeight = 650
+  ClientWidth = 1067
+  Color = 1052682
+  Font.Color = clWhite
+  Font.Name = 'Courier New'
+  KeyPreview = True
+  Position = poScreenCenter
+  LCLVersion = '4.8.0.0'
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnKeyDown = FormKeyDown
+  object pnlTop: TPanel
+    Left = 0
+    Height = 40
+    Top = 0
+    Width = 1067
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 40
+    ClientWidth = 1067
+    Color = 1710619
+    ParentBackground = False
+    ParentColor = False
+    TabOrder = 0
+    object lblTitle: TLabel
+      Left = 16
+      Height = 14
+      Top = 11
+      Width = 413
+      Caption = '[ A S T R A L O G I C A  :  O R B I T A L   C O M M A N D ]'
+      Font.Color = 13434624
+      Font.Height = 15
+      Font.Name = 'Courier New'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object lblSol: TLabel
+      Left = 957
+      Height = 14
+      Top = 11
+      Width = 91
+      Anchors = [akTop, akRight]
+      Caption = '[ SOL : 001 ]'
+      Font.Color = 13434624
+      Font.Height = 15
+      Font.Name = 'Courier New'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+  end
+  object pnlBottom: TPanel
+    Left = 0
+    Height = 32
+    Top = 618
+    Width = 1067
+    Align = alBottom
+    BevelOuter = bvNone
+    ClientHeight = 32
+    ClientWidth = 1067
+    Color = 1710619
+    ParentBackground = False
+    ParentColor = False
+    TabOrder = 1
+    object lblStatusText: TLabel
+      Left = 16
+      Height = 16
+      Top = 8
+      Width = 120
+      Caption = 'STATUS: NOMINAL'
+      Font.Color = 13434624
+      Font.Height = -13
+      Font.Name = 'Courier New'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object lblUptime: TLabel
+      Left = 915
+      Height = 16
+      Top = 8
+      Width = 128
+      Anchors = [akTop, akRight]
+      Caption = 'UPTIME: 00:00:00'
+      Font.Color = clYellow
+      Font.Height = -13
+      Font.Name = 'Courier New'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+  end
+  object pnlLeft: TPanel
+    Left = 0
+    Height = 578
+    Top = 40
+    Width = 280
+    Align = alLeft
+    BevelOuter = bvNone
+    ClientHeight = 578
+    ClientWidth = 280
+    Color = clBlack
+    ParentBackground = False
+    ParentColor = False
+    TabOrder = 2
+    object pbModules: TPaintBox
+      Left = 0
+      Height = 252
+      Top = 0
+      Width = 280
+      Align = alTop
+      OnPaint = pbModulesPaint
+    end
+    object pbCoreStatus: TPaintBox
+      Left = 0
+      Height = 326
+      Top = 252
+      Width = 280
+      Align = alClient
+      Color = clBlack
+      ParentColor = False
+      OnPaint = pbCoreStatusPaint
+    end
+  end
+  object pnlRight: TPanel
+    Left = 787
+    Height = 578
+    Top = 40
+    Width = 280
+    Align = alRight
+    BevelInner = bvLowered
+    ClientHeight = 578
+    ClientWidth = 280
+    Color = clBtnFace
+    Font.Color = clWhite
+    Font.Height = -13
+    Font.Name = 'Consolas'
+    ParentBackground = False
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 3
+    object pnlRightControls: TPanel
+      Left = 2
+      Height = 170
+      Top = 406
+      Width = 276
+      Align = alBottom
+      BevelOuter = bvNone
+      ClientHeight = 170
+      ClientWidth = 276
+      ParentBackground = False
+      TabOrder = 0
+      object btnNewGame: TButton
+        Left = 0
+        Height = 36
+        Top = 84
+        Width = 276
+        Align = alBottom
+        Caption = 'INITIALIZE / NEW GAME'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Consolas'
+        ParentFont = False
+        TabOrder = 0
+        OnClick = btnNewGameClick
+      end
+      object btnSaveGame: TButton
+        Left = 0
+        Height = 36
+        Top = 12
+        Width = 276
+        Align = alBottom
+        Caption = 'SAVE TELEMETRY'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Consolas'
+        ParentFont = False
+        TabOrder = 1
+        OnClick = btnSaveGameClick
+      end
+      object btnLoadGame: TButton
+        Left = 0
+        Height = 36
+        Top = 48
+        Width = 276
+        Align = alBottom
+        Caption = 'RESTORE TELEMETRY'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Consolas'
+        ParentFont = False
+        TabOrder = 2
+        OnClick = btnLoadGameClick
+      end
+      object lblFilter: TLabel
+        Left = 4
+        Height = 14
+        Top = 124
+        Width = 268
+        Align = alBottom
+        BorderSpacing.Around = 4
+        Caption = 'RADAR VISUAL FILTER:'
+        Font.Color = clBlue
+        Font.Height = -11
+        Font.Name = 'Courier New'
+        ParentColor = False
+        ParentFont = False
+      end
+      object cmbVisualFilter: TComboBox
+        Left = 4
+        Height = 24
+        Top = 142
+        Width = 268
+        Align = alBottom
+        BorderSpacing.Around = 4
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Courier New'
+        ItemHeight = 16
+        Items.Strings = (
+          'MODE: STANDARD'
+          'MODE: CRT GLITCH'
+          'MODE: RED ALERT'
+          'MODE: STARFIELD'
+        )
+        ParentFont = False
+        Style = csDropDownList
+        TabOrder = 3
+        OnChange = cmbVisualFilterChange
+      end
+    end
+    object pnlLeftControls: TPanel
+      Left = 5
+      Height = 398
+      Top = 5
+      Width = 270
+      Align = alClient
+      BorderSpacing.Around = 3
+      BevelOuter = bvNone
+      ClientHeight = 398
+      ClientWidth = 270
+      ParentBackground = False
+      TabOrder = 1
+      object btnToggleLS: TButton
+        Left = 5
+        Height = 28
+        Top = 5
+        Width = 260
+        Align = alTop
+        BorderSpacing.Around = 5
+        Caption = 'TOGGLE LIFE SUPPORT'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Consolas'
+        ParentFont = False
+        TabOrder = 0
+        OnClick = btnToggleLSClick
+      end
+      object btnToggleShield: TButton
+        Left = 5
+        Height = 28
+        Top = 38
+        Width = 260
+        Align = alTop
+        BorderSpacing.Around = 5
+        Caption = 'TOGGLE SHIELD'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Consolas'
+        ParentFont = False
+        TabOrder = 1
+        OnClick = btnToggleShieldClick
+      end
+      object btnToggleLab: TButton
+        Left = 5
+        Height = 28
+        Top = 71
+        Width = 260
+        Align = alTop
+        BorderSpacing.Around = 5
+        Caption = 'TOGGLE LAB'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Consolas'
+        ParentFont = False
+        TabOrder = 2
+        OnClick = btnToggleLabClick
+      end
+      object btnToggleComms: TButton
+        Left = 5
+        Height = 28
+        Top = 104
+        Width = 260
+        Align = alTop
+        BorderSpacing.Around = 5
+        Caption = 'TOGGLE COMMS'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Consolas'
+        ParentFont = False
+        TabOrder = 3
+        OnClick = btnToggleCommsClick
+      end
+      object btnUpgrade: TButton
+        Left = 5
+        Height = 28
+        Top = 137
+        Width = 260
+        Align = alTop
+        BorderSpacing.Around = 5
+        Caption = 'UPGRADE MODULE'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Consolas'
+        ParentFont = False
+        TabOrder = 4
+        OnClick = btnUpgradeClick
+      end
+      object btnAddCrew: TButton
+        Left = 5
+        Height = 28
+        Top = 170
+        Width = 260
+        Align = alTop
+        BorderSpacing.Around = 5
+        Caption = 'ASSIGN CREW'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Consolas'
+        ParentFont = False
+        TabOrder = 5
+        OnClick = btnAddCrewClick
+      end
+      object btnRemoveCrew: TButton
+        Left = 5
+        Height = 28
+        Top = 203
+        Width = 260
+        Align = alTop
+        BorderSpacing.Around = 5
+        Caption = 'RECALL CREW'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Consolas'
+        ParentFont = False
+        TabOrder = 6
+        OnClick = btnRemoveCrewClick
+      end
+      object btnDirectiveShield: TButton
+        Left = 5
+        Height = 28
+        Top = 236
+        Width = 260
+        Align = alTop
+        BorderSpacing.Around = 5
+        Caption = '[A] SHIELD BOOST'
+        Font.Color = clRed
+        Font.Height = -13
+        Font.Name = 'Consolas'
+        ParentFont = False
+        TabOrder = 7
+        OnClick = btnDirectiveShieldClick
+      end
+      object btnDirectiveCargo: TButton
+        Left = 5
+        Height = 28
+        Top = 269
+        Width = 260
+        Align = alTop
+        BorderSpacing.Around = 5
+        Caption = '[B] JETTISON CARGO'
+        Font.Color = clRed
+        Font.Height = -13
+        Font.Name = 'Consolas'
+        ParentFont = False
+        TabOrder = 8
+        OnClick = btnDirectiveCargoClick
+      end
+      object GroupBox1: TGroupBox
+        Left = 0
+        Height = 82
+        Top = 316
+        Width = 270
+        Align = alBottom
+        Caption = 'Repair Module'
+        ClientHeight = 62
+        ClientWidth = 266
+        ParentBackground = False
+        TabOrder = 9
+        object cmbTargetModule: TComboBox
+          Left = 5
+          Height = 23
+          Top = 5
+          Width = 256
+          Align = alTop
+          BorderSpacing.Around = 5
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Consolas'
+          ItemHeight = 15
+          Items.Strings = (
+            'Life Support'
+            'Deflector Shield'
+            'Research Lab'
+            'Comms Array'
+            'Main Generator'
+          )
+          ParentFont = False
+          Style = csDropDownList
+          TabOrder = 0
+        end
+        object btnRepair: TButton
+          Left = 5
+          Height = 24
+          Top = 33
+          Width = 256
+          Align = alClient
+          BorderSpacing.Around = 5
+          Caption = 'DISPATCH REPAIR DRONE'
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Consolas'
+          ParentFont = False
+          TabOrder = 1
+          OnClick = btnRepairClick
+        end
+      end
+    end
+  end
+  object pnlCenter: TPanel
+    Left = 280
+    Height = 578
+    Top = 40
+    Width = 507
+    Align = alClient
+    BevelOuter = bvNone
+    ClientHeight = 578
+    ClientWidth = 507
+    Color = 657930
+    ParentBackground = False
+    ParentColor = False
+    TabOrder = 4
+    object pbRadar: TPaintBox
+      Left = 5
+      Height = 426
+      Top = 0
+      Width = 497
+      Align = alTop
+      BorderSpacing.Left = 5
+      BorderSpacing.Right = 5
+      BorderSpacing.Bottom = 5
+      OnPaint = pbRadarPaint
+    end
+    object Panel1: TPanel
+      Left = 5
+      Height = 147
+      Top = 431
+      Width = 497
+      Align = alClient
+      BorderSpacing.Left = 5
+      BorderSpacing.Right = 5
+      BevelOuter = bvNone
+      ClientHeight = 147
+      ClientWidth = 497
+      Color = 5381919
+      ParentBackground = False
+      ParentColor = False
+      TabOrder = 0
+      object lbEventLog: TListBox
+        Left = 10
+        Height = 127
+        Top = 10
+        Width = 477
+        Align = alClient
+        BorderSpacing.Around = 10
+        BorderStyle = bsNone
+        Color = 5381919
+        Font.Color = clLime
+        Font.Height = -15
+        Font.Name = 'Terminal'
+        Font.Quality = fqCleartypeNatural
+        ItemHeight = 0
+        ParentFont = False
+        TabOrder = 0
+      end
+    end
+    object btnDecrypt: TButton
+      Left = 190
+      Height = 30
+      Top = 390
+      Width = 145
+      Caption = '[Y] DECRYPT'
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Consolas'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 1
+      Visible = False
+      OnClick = btnDecryptClick
+    end
+    object btnIgnore: TButton
+      Left = 345
+      Height = 30
+      Top = 390
+      Width = 145
+      Caption = '[N] IGNORE'
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Consolas'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 2
+      Visible = False
+      OnClick = btnIgnoreClick
+    end
+  end
+  object TimerLoop: TTimer
+    Interval = 33
+    OnTimer = TimerLoopTimer
+    Left = 320
+    Top = 64
+  end
+end

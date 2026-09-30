@@ -1,0 +1,94 @@
+object SaveLoadForm: TSaveLoadForm
+  Left = 350
+  Height = 290
+  Top = 250
+  Width = 400
+  BorderStyle = bsDialog
+  Caption = 'Terminal: Select Telemetry Slot'
+  ClientHeight = 290
+  ClientWidth = 400
+  Color = 1052682
+  Font.Color = clWhite
+  Font.Name = 'Courier New'
+  OnCreate = FormCreate
+  OnShow = FormShow
+  Position = poMainFormCenter
+  LCLVersion = '3.0.0.3'
+  object pnlBackground: TPanel
+    Left = 0
+    Height = 290
+    Top = 0
+    Width = 400
+    Align = alClient
+    BevelOuter = bvNone
+    ClientHeight = 290
+    ClientWidth = 400
+    Color = 657930
+    ParentBackground = False
+    ParentColor = False
+    TabOrder = 0
+    object lblTitle: TLabel
+      Left = 20
+      Height = 15
+      Top = 20
+      Width = 360
+      Alignment = taCenter
+      AutoSize = False
+      Caption = '[ SELECT TELEMETRY SLOT ]'
+      Font.Color = 13434624
+      Font.Height = 15
+      Font.Name = 'Courier New'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object btnSlot1: TButton
+      Left = 30
+      Height = 40
+      Top = 60
+      Width = 340
+      Caption = 'SLOT 1 - [ EMPTY ]'
+      Font.Color = clBlack
+      Font.Name = 'Courier New'
+      ParentFont = False
+      TabOrder = 0
+      OnClick = btnSlotClick
+    end
+    object btnSlot2: TButton
+      Left = 30
+      Height = 40
+      Top = 110
+      Width = 340
+      Caption = 'SLOT 2 - [ EMPTY ]'
+      Font.Color = clBlack
+      Font.Name = 'Courier New'
+      ParentFont = False
+      TabOrder = 1
+      OnClick = btnSlotClick
+    end
+    object btnSlot3: TButton
+      Left = 30
+      Height = 40
+      Top = 160
+      Width = 340
+      Caption = 'SLOT 3 - [ EMPTY ]'
+      Font.Color = clBlack
+      Font.Name = 'Courier New'
+      ParentFont = False
+      TabOrder = 2
+      OnClick = btnSlotClick
+    end
+    object btnCancel: TButton
+      Left = 30
+      Height = 40
+      Top = 220
+      Width = 340
+      Caption = 'CANCEL / ABORT'
+      Font.Color = clBlack
+      Font.Name = 'Courier New'
+      ParentFont = False
+      TabOrder = 3
+      OnClick = btnCancelClick
+    end
+  end
+end
