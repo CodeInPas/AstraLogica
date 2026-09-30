@@ -1,10 +1,9 @@
----
-
 # AstraLogica: Orbital Command
 
-<img width="1117" height="694" alt="astro" src="https://github.com/user-attachments/assets/7426f6a5-b68a-4e9f-857b-9a96b71d370f" />
-
 > *A retro-themed orbital command simulation game built with Lazarus, Free Pascal, and BGRABitmap.*
+
+<img width="800" height="494" alt="astro" src="https://github.com/user-attachments/assets/7426f6a5-b68a-4e9f-857b-9a96b71d370f" />
+
 
 ## 🛰️ About The Game
 
